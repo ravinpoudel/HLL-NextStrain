@@ -1,4 +1,5 @@
-# HLL-NextStrain
+Sure! Below is the updated description with the installation instructions, including the `requirements.txt`:
+
 ## Project Overview: Comparing Flu Strains Using HyperLogLog and k-mer Analysis
 
 ### Objective
@@ -26,29 +27,37 @@ HyperLogLog is a probabilistic data structure used for cardinality estimation, w
    - Compare the HLL of the new strain with each of the existing strains' HLLs to estimate the Jaccard similarity.
    - Output the similarity results, indicating the genetic relationship between the new strain and each existing strain.
 
-### Detailed Steps
-
-1. **Extract k-mers:**
-   - Generate all possible k-mers from a given sequence. The length of k-mers (k) is typically set to 31, which provides a good balance between specificity and computational efficiency.
-
-2. **Create HyperLogLog from Sequence:**
-   - For each sequence, extract k-mers and update the HLL data structure with these k-mers. The HLL will efficiently estimate the number of unique k-mers.
-
-3. **Save and Load HLLs:**
-   - Save the HLLs to files, allowing for efficient storage and retrieval. This step is crucial for comparing new strains with precomputed HLLs without reprocessing the entire dataset.
-
-4. **Compare HLLs Using Jaccard Similarity:**
-   - The Jaccard similarity between two HLLs provides an estimate of the overlap between the k-mer sets of two sequences. Higher similarity indicates a closer genetic relationship.
+5. **Phylogenetic Tree Construction:**
+   - Create a distance matrix from the Jaccard similarities.
+   - Construct and save a phylogenetic tree (dendrogram) based on the distance matrix.
 
 ### Code Overview
-The provided Python script implements the above workflow, with functions for extracting k-mers, creating and saving HLLs, and comparing HLLs to estimate genetic similarities.
+The provided Python script implements the above workflow, with functions for extracting k-mers, creating and saving HLLs, comparing HLLs to estimate genetic similarities, and constructing a phylogenetic tree.
 
 - **`extract_kmers(sequence, k)`:** Generates k-mers from a sequence.
 - **`create_hll_from_sequence(sequence, k=31)`:** Constructs an HLL from k-mers of a sequence.
 - **`load_existing_hlls(hll_dir)`:** Loads precomputed HLLs from files.
 - **`save_hll(hll, filename)`:** Saves an HLL to a file.
 - **`compare_with_existing_strains(new_hll, existing_hlls)`:** Compares a new strain's HLL with existing HLLs and estimates Jaccard similarities.
-- **`main()`:** Orchestrates the workflow of creating, saving, loading, and comparing HLLs.
+- **`create_distance_matrix(existing_hlls)`:** Creates a distance matrix from Jaccard similarities.
+- **`plot_dendrogram(distance_matrix, strain_names, output_file)`:** Plots and saves a dendrogram based on the distance matrix.
+- **`main()`:** Orchestrates the workflow of creating, saving, loading, comparing HLLs, and constructing the phylogenetic tree.
+
+### Installation Instructions
+To install the required packages, create a file named `requirements.txt` with the following content:
+
+```
+scipy
+matplotlib
+biopython
+datasketch
+```
+
+Then run the following command to install the packages:
+
+```sh
+pip install -r requirements.txt
+```
 
 ### Applications
 - **Epidemiological Studies:** Quickly identify the genetic similarity between new and existing flu strains, aiding in tracking and understanding the spread of the virus.
@@ -56,4 +65,4 @@ The provided Python script implements the above workflow, with functions for ext
 - **Genomic Research:** Efficiently handle large-scale genomic data, providing a scalable solution for comparing genetic sequences.
 
 ### Conclusion
-This project demonstrates an efficient and scalable approach to genomic sequence comparison using HyperLogLog and k-mer analysis. By leveraging probabilistic data structures, we can perform rapid and memory-efficient similarity analysis, providing valuable insights into the genetic relationships between flu strains.
+This project demonstrates an efficient and scalable approach to genomic sequence comparison using HyperLogLog and k-mer analysis. By leveraging probabilistic data structures, we can perform rapid and memory-efficient similarity analysis, providing valuable insights into the genetic relationships between flu strains. The phylogenetic tree constructed from these similarities offers a visual representation of these relationships, aiding in further biological interpretations.
