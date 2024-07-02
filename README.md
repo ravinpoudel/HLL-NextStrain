@@ -1,4 +1,4 @@
-## Project Overview: Comparing Flu Strains Using HyperLogLog and k-mer Analysis
+## Project Overview: Tracking Flu Strains Using HyperLogLog and k-mer Analysis
 
 ### Objective
 The primary objective of this project is to compare a new flu strain with existing strains by leveraging the HyperLogLog (HLL) algorithm to efficiently estimate the number of unique k-mers in genomic sequences. This method allows for quick and memory-efficient similarity analysis of large-scale genomic data.
