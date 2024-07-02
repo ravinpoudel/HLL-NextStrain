@@ -1,5 +1,3 @@
-Sure! Below is the updated description with the installation instructions, including the `requirements.txt`:
-
 ## Project Overview: Comparing Flu Strains Using HyperLogLog and k-mer Analysis
 
 ### Objective
