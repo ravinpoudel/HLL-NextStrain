@@ -1,5 +1,3 @@
-title: your website title
-description: some description
 plugins:
   - jekyll-relative-links
 relative_links:
